@@ -14,6 +14,7 @@
  *
  * Return: a character pointer to the  current delimited token
  */
+char *_strtok(char *str, char *deli);
 
 char *_strtok(char *str, char *deli)
 {
@@ -21,6 +22,7 @@ char *_strtok(char *str, char *deli)
 
 	if (str == NULL)
 	{
+		str = store;
 
 	}
 	if (str == NULL)
@@ -30,6 +32,31 @@ char *_strtok(char *str, char *deli)
 
 	while (1)
 	{
-		if (is_deli())
+		if (is_deli(*str, deli))
+		{
+			str++;
+			continue;
+		}
+		if (*str == '\0')
+		{
+			return (NULL);
+		}
+		break;
+	}
+	char *start = str;
+
+	while (1)
+	{
+		if (*str == '\0')
+		{
+			store = str;
+			return (start);
+		}
+		if (is_deli(*str, deli))
+		{
+			*str = '\0';
+			store = str + 1;
+		}
+		str++;
 	}
 }

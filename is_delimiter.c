@@ -1,4 +1,4 @@
-#include "shell.c"
+#include "shell.h"
 
 /**
  * is_deli - checks whether the char c is in the array of delimiters
@@ -8,7 +8,7 @@
  * Return: 1 if the char c is a delimiter, 0 if char c is not a delimiter
  */
 
-int is_deli(char c, char *arraydeli)
+unsigned int is_deli(char c, char *arraydeli)
 {
 	while (*arraydeli != '\0')
 	{

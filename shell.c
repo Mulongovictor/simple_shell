@@ -15,10 +15,13 @@ int main()
 	int i;
 	int j;
 	int count;
+	int interactive = 1;
 
 	while (1)
 	{
-		write(1, prompt, strlen(prompt));
+		interactive = isatty(STDIN_FILENO);
+		if (interactive == 1)
+			write(1, prompt, _strlen(prompt));
 
 		bytesgot = getline(&usercommand, &buffersize, stdin);
 
@@ -26,16 +29,18 @@ int main()
 		i = 0;
 		count = 0;
 
-		portion = strtok(usercommand, delim);
+		portion = _strtok(usercommand, delim);
 
 		while (portion != NULL)
 		{
-			ptr[i] = (char *)malloc(strlen(portion) + 1);
-			strcpy(ptr[i], portion);
+			ptr[i] = (char *)malloc(_strlen(portion) + 1);
+			_strcpy(ptr[i], portion);
 			i++;
 			count++;
-			portion = strtok(NULL, delim);
+			portion = _strtok(NULL, delim);
 		}
+		if (interactive != 1)
+			break;
 		ptr[i] = NULL;
 
 		if (i == 0)
@@ -45,14 +50,14 @@ int main()
 
 		if (strcmp(ptr[0], "exit") == 0)
 		{
-			write(1, "Exiting shell...\n", strlen("Exiting shell...\n"));
+			write(1, "Exiting shell...\n", _strlen("Exiting shell...\n"));
 			free(ptr[0]);
 			break;
 		}
 
 		if (bytesgot == -1)
 		{
-			write(1, "Exiting shell...\n", strlen("Exiting shell...\n"));
+			write(1, "Exiting shell...\n", _strlen("Exiting shell...\n"));
 			break;
 		}
 

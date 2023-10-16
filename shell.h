@@ -10,5 +10,7 @@
 
 char *_strtok(char *str, char *deli);
 unsigned int is_deli(char c, char *arraydeli);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *str);
 
 #endif /*shell .h*/

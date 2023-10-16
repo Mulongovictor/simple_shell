@@ -4,7 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 char *_strtok(char *str, char *deli);
 unsigned int is_deli(char c, char *arraydeli);

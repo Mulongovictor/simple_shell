@@ -19,6 +19,7 @@ char *_strtok(char *str, char *deli);
 char *_strtok(char *str, char *deli)
 {
 	static char *store;
+	char *start;
 
 	if (str == NULL)
 	{
@@ -43,7 +44,7 @@ char *_strtok(char *str, char *deli)
 		}
 		break;
 	}
-	char *start = str;
+	start = str;
 
 	while (1)
 	{

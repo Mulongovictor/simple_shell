@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include "shell.h"
 
 int main();
 int main()
@@ -58,7 +53,6 @@ int main()
 		if (bytesgot == -1)
 		{
 			write(1, "Exiting shell...\n", strlen("Exiting shell...\n"));
-			free(ptr);
 			break;
 		}
 
@@ -66,7 +60,7 @@ int main()
 
 		if (child_process == 0)
 		{
-			if (execvp(ptr[0], ptr) == -1)
+			if (execve(ptr[0], ptr, NULL) == -1)
 			{
 				perror("Error");
 				exit(EXIT_FAILURE);

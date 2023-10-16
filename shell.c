@@ -16,6 +16,7 @@ int main()
 	int j;
 	int count;
 	int interactive = 1;
+	char *child_path;
 
 	while (1)
 	{
@@ -65,9 +66,18 @@ int main()
 
 		if (child_process == 0)
 		{
-			if (execve(ptr[0], ptr, NULL) == -1)
+			child_path = path_find(portion);
+
+			if (child_path == NULL)
 			{
-				perror("Error");
+				perror("Command Not Found");
+				exit (1);
+			}
+			execve(child_path, &portion, __environ);
+
+			if (execve(child_path, &portion, __environ) == -1)
+			{
+				perror("Error: Failed to execute the program");
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -75,7 +85,7 @@ int main()
 		{
 			free(ptr);
 			perror("fork failed");
-			exit(EXIT_FAILURE);
+			return (-1);
 		}
 		else
 		{

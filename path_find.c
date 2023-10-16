@@ -24,8 +24,8 @@ char *path_find(char *command)
 
 		if (access(str, X_OK) == 0)
 		{
-			free(path_dup)
-				return (str)
+			free(path_dup);
+				return (str);
 		}
 		free(str);
 		strarg = strtok(NULL, ":");

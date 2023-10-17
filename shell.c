@@ -1,7 +1,12 @@
 #include "shell.h"
+/**
+ * main - mimicks the operation of a ./sh
+ *
+ * Return: 0 Always for Success
+ */
 
-int main();
-int main()
+int main(void);
+int main(void)
 {
 	char *prompt = "victor&ritashell$ ";
 	char *usercommand = NULL;
@@ -66,16 +71,16 @@ int main()
 
 		if (child_process == 0)
 		{
-			child_path = path_find(portion);
+			child_path = path_find(usercommand[0]);
 
 			if (child_path == NULL)
 			{
 				perror("Command Not Found");
-				exit (1);
+				exit(1);
 			}
-			execve(child_path, &portion, __environ);
 
-			if (execve(child_path, &portion, __environ) == -1)
+			execve(child_path, usercommand, environ);
+			if (execve(child_path, usercommand, environ) == -1)
 			{
 				perror("Error: Failed to execute the program");
 				exit(EXIT_FAILURE);

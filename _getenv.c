@@ -14,12 +14,21 @@ char *_getenv(char *variable)
 
 	for (i = 0; environ[i]; i++)
 	{
+<<<<<<< HEAD
 		tmp = strdup(environ[i]);
 		key = strtok(tmp, ":");
 		if (_strcmp(key, variable) == 0)
 		{
 			value = strtok(NULL, "\n");
 				env = strdup(value);
+=======
+		tmp = _strdup(environ[i]);
+		key = _strtok(tmp, ":");
+		if (_strcmp(key, variable) == 0)
+		{
+			value = _strtok(NULL, " \n");
+			env = _strdup(value);
+>>>>>>> 3a627abc34ce608069cc832cbb338bc353db830d
 			free(tmp);
 			return (env);
 		}

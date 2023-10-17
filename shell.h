@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 
 extern char** environ;
 
@@ -16,5 +17,8 @@ unsigned int is_deli(char c, char *arraydeli);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *str);
 int _strcmp(char *s1,char *s2);
+char *_strcat(char *desti, const char *src);
+char *_strdup(const char *string);
+char *_getenv(char *variable);
 
 #endif /*shell .h*/

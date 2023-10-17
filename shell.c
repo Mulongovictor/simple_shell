@@ -8,7 +8,7 @@
 int main(void);
 int main(void)
 {
-	char *prompt = "victor&ritashell$ ";
+	char *prompt = "$ ";
 	char *usercommand = NULL;
 	char **ptr;
 	char *portion;
@@ -30,8 +30,13 @@ int main(void)
 			write(1, prompt, _strlen(prompt));
 
 		bytesgot = getline(&usercommand, &buffersize, stdin);
-
-		ptr = (char **)malloc(sizeof(char *) * 20);
+		ptr = malloc(sizeof(char *) * 20);
+		if (bytesgot == -1)
+		{
+			write(1, "\n", 1);
+			free(ptr);
+			exit(0);
+		}
 		i = 0;
 		count = 0;
 
@@ -56,13 +61,6 @@ int main(void)
 		{
 			free(ptr[0]);
 			break;
-		}
-
-		if (bytesgot == -1)
-		{
-			write(1, "\n", 1);
-			free(ptr);
-			exit(0);
 		}
 
 		child_process = fork();

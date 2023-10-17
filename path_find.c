@@ -21,13 +21,13 @@ char *path_find(char *command)
 		{
 			if (stat(command, &filedetails) == 0)
 			{
-				return (_strdup(command));
+				return (strdup(command));
 			}
 			return (NULL);
 		}
 	}
 
-	pathenv = _getenv("PATH");
+	pathenv = getenv("PATH");
 
 	if (!pathenv)
 	{
@@ -42,8 +42,8 @@ char *path_find(char *command)
 		if (fullcommand)
 		{
 			_strcpy(fullcommand, directory);
-			_strcat(fullcommand, "/");
-			_strcat(fullcommand, command);
+			strcat(fullcommand, "/");
+			strcat(fullcommand, command);
 			if (stat(fullcommand, &filedetails) == 0)
 			{
 				free(pathenv);

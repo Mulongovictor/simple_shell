@@ -33,11 +33,11 @@ char *path_find(char *command)
 	{
 		return (NULL);
 	}
-	directory = strtok(pathenv, ":");
+	directory = _strtok(pathenv, ":");
 
 	while (directory)
 	{
-		fullcommand = malloc(strlen(directory) + strlen(command) + 2);
+		fullcommand = malloc(_strlen(directory) + _strlen(command) + 2);
 
 		if (fullcommand)
 		{
@@ -51,7 +51,7 @@ char *path_find(char *command)
 			}
 			free(fullcommand), fullcommand = NULL;
 
-			directory = strtok(NULL, ":");
+			directory = _strtok(NULL, ":");
 		}
 	}
 	free(pathenv);

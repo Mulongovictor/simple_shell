@@ -3,7 +3,6 @@
 /**
  * _strlen - counts the number of characters in a string
  * @str: is the pointer to the string whose length is counted
- *
  * Return: the size of the string count.
  */
 

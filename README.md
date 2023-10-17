@@ -1,4 +1,4 @@
-0x16. C - Simple Shell Project
+0x16. C - Simple Shell Project.
 
 This projects looks at recreating the shell the same way as it operates in the terminal using the
 core c-programming skills attained in the ALX-programme.

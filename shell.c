@@ -56,22 +56,22 @@ int main(void)
 
 		if (strcmp(ptr[0], "exit") == 0)
 		{
-			write(1, "Exiting shell...\n", _strlen("Exiting shell...\n"));
 			free(ptr[0]);
 			break;
 		}
 
 		if (bytesgot == -1)
 		{
-			write(1, "Exiting shell...\n", _strlen("Exiting shell...\n"));
-			break;
+			write(1, "\n", 1);
+			free(ptr);
+			exit(0);
 		}
 
 		child_process = fork();
 
 		if (child_process == 0)
 		{
-			child_path = path_find(usercommand[0]);
+			child_path = path_find(ptr[0]);
 
 			if (child_path == NULL)
 			{
@@ -79,8 +79,8 @@ int main(void)
 				exit(1);
 			}
 
-			execve(child_path, usercommand, environ);
-			if (execve(child_path, usercommand, environ) == -1)
+			execve(child_path, ptr, environ);
+			if (execve(child_path, ptr, environ) == -1)
 			{
 				perror("Error: Failed to execute the program");
 				exit(EXIT_FAILURE);

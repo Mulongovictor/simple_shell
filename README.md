@@ -4,7 +4,7 @@ This projects looks at recreating the shell the same way as it operates in the t
 core c-programming skills attained in the ALX-programme.
 The program has the exact same output as sh (/bin/sh) as well as the exact same error output.
 
-This Shell programme operates in the following ways listed below:
+This Shell programme operates in the following ways listed below;
 
 Displays a prompt and wait for the user to type a command. A command line always ends with a new line.
 The prompt is displayed again each time a command has been executed.

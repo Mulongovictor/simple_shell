@@ -26,7 +26,7 @@ int main(void)
 	while (1)
 	{
 		interactive = isatty(STDIN_FILENO);
-		if (interactive == 1)
+		if (interactive != 0)
 			write(1, prompt, _strlen(prompt));
 
 		bytesgot = getline(&usercommand, &buffersize, stdin);
@@ -45,8 +45,6 @@ int main(void)
 			count++;
 			portion = _strtok(NULL, delim);
 		}
-		if (interactive != 1)
-			break;
 		ptr[i] = NULL;
 
 		if (i == 0)
@@ -101,9 +99,10 @@ int main(void)
 		{
 			free(ptr[j]);
 		}
+		if (interactive == 0)
+			break;
 	}
 	free(ptr);
-
 	if (usercommand != NULL)
 	{
 		free(usercommand);

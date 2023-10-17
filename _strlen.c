@@ -6,7 +6,7 @@
  * Return: the size of the string count.
  */
 
-int _strlen(char *str)
+int _strlen(const char *str)
 {
 	int i, countchar = 0;
 

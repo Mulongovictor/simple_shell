@@ -12,4 +12,5 @@ The command lines are simple, no semicolons, no pipes, no redirections or any ot
 The command lines are made only of one word. No arguments will be passed to programs.
 If an executable cannot be found, prints an error message and displays the prompt again.
 Handle errors.
+
 Handles the “end of file” condition (Ctrl+D).

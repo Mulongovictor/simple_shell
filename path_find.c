@@ -8,28 +8,52 @@
  * or NULL if the two joined strings are not accessible
  */
 
+char *path_find(char *command);
 char *path_find(char *command)
 {
-	char *path = getenv("PATH");
-	char *path_dup = strdup(path);
-	char *strarg;
+	char *pathenv, *fullcommand, *directory;
+	struct stat filedetails;
+	int i;
 
-	strarg = strtok(path_dup, ":");
-
-	while (strarg != NULL)
+	for (i = 0; command[i]; i++)
 	{
-		char *str = malloc(strlen(strarg) + strlen(command) + 2);
-
-		sprintf(str, "%s/%s", strarg, command);
-
-		if (access(str, X_OK) == 0)
+		if (command[i] == '/')
 		{
-			free(path_dup);
-				return (str);
+			if (stat(command, &filedetails) == 0)
+			{
+				return (_strdup(command));
+			}
+			return (NULL);
 		}
-		free(str);
-		strarg = strtok(NULL, ":");
 	}
-	free(path_dup);
+
+	pathenv = _getenv("PATH");
+
+	if (!pathenv)
+	{
+		return (NULL);
+	}
+	directory = strtok(pathenv, ":");
+
+	while (directory)
+	{
+		fullcommand = malloc(strlen(directory) + strlen(command) + 2);
+
+		if (fullcommand)
+		{
+			_strcpy(fullcommand, directory);
+			_strcat(fullcommand, "/");
+			_strcat(fullcommand, command);
+			if (stat(fullcommand, &filedetails) == 0)
+			{
+				free(pathenv);
+				return (fullcommand);
+			}
+			free(fullcommand), fullcommand = NULL;
+
+			directory = strtok(NULL, ":");
+		}
+	}
+	free(pathenv);
 	return (NULL);
 }

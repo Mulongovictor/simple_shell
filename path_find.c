@@ -11,7 +11,9 @@
 char *path_find(char *command);
 char *path_find(char *command)
 {
-	char *pathenv, *fullcommand, *directory;
+	char *pathenv; 
+	char *fullcommand; 
+	char *directory;
 	struct stat filedetails;
 	int i;
 
@@ -54,6 +56,6 @@ char *path_find(char *command)
 			directory = _strtok(NULL, ":");
 		}
 	}
-	free(pathenv);;
+	free(pathenv);
 	return (NULL);
 }

@@ -28,7 +28,6 @@ int main(void)
 		interactive = isatty(STDIN_FILENO);
 		if (interactive != 0)
 			write(1, prompt, _strlen(prompt));
-		ptr = malloc(sizeof(char *) * 20);
 		bytesgot = getline(&usercommand, &buffersize, stdin);
 		if (bytesgot == -1)
 		{
@@ -38,16 +37,17 @@ int main(void)
 		}
 		i = 0;
 		count = 0;
+		ptr = malloc(sizeof(char *) * 20);
 
-		portion = _strtok(usercommand, delim);
+		portion = strtok(usercommand, delim);
 
 		while (portion != NULL)
 		{
-			ptr[i] = (char *)malloc(_strlen(portion) + 1);
+			ptr[i] = malloc(sizeof(char) * (_strlen(portion) + 1));
 			_strcpy(ptr[i], portion);
 			i++;
 			count++;
-			portion = _strtok(NULL, delim);
+			portion = strtok(NULL, delim);
 		}
 		ptr[i] = NULL;
 
@@ -61,6 +61,7 @@ int main(void)
 			free(ptr[0]);
 			break;
 		}
+		printf("%d\n",count);
 
 		child_path = path_find(ptr[0]);
 		if (child_path == NULL)

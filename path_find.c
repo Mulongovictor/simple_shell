@@ -27,7 +27,7 @@ char *path_find(char *command)
 		}
 	}
 
-	pathenv = getenv("PATH");
+	pathenv = _getenv("PATH");
 
 	if (!pathenv)
 	{
@@ -54,6 +54,6 @@ char *path_find(char *command)
 			directory = _strtok(NULL, ":");
 		}
 	}
-	free(pathenv);
+	free(pathenv);;
 	return (NULL);
 }

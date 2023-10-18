@@ -28,9 +28,8 @@ int main(void)
 		interactive = isatty(STDIN_FILENO);
 		if (interactive != 0)
 			write(1, prompt, _strlen(prompt));
-
-		bytesgot = getline(&usercommand, &buffersize, stdin);
 		ptr = malloc(sizeof(char *) * 20);
+		bytesgot = getline(&usercommand, &buffersize, stdin);
 		if (bytesgot == -1)
 		{
 			write(1, "\n", 1);
@@ -63,18 +62,18 @@ int main(void)
 			break;
 		}
 
+		child_path = path_find(ptr[0]);
+		if (child_path == NULL)
+		{
+			perror("Command Not Found");
+			free(ptr);
+			continue;
+		}
+
 		child_process = fork();
 
 		if (child_process == 0)
 		{
-			child_path = path_find(ptr[0]);
-
-			if (child_path == NULL)
-			{
-				perror("Command Not Found");
-				exit(1);
-			}
-
 			execve(child_path, ptr, environ);
 			if (execve(child_path, ptr, environ) == -1)
 			{

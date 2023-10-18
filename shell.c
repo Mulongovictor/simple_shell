@@ -61,7 +61,6 @@ int main(void)
 			free(ptr[0]);
 			break;
 		}
-		printf("%d\n",count);
 
 		child_path = path_find(ptr[0]);
 		if (child_path == NULL)

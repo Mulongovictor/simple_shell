@@ -11,8 +11,8 @@
 char *path_find(char *command);
 char *path_find(char *command)
 {
-	char *pathenv; 
-	char *fullcommand; 
+	char *pathenv;
+	char *fullcommand;
 	char *directory;
 	struct stat filedetails;
 	int i;

@@ -32,7 +32,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 				free(commands);
 				exit_bul(cmd, userinput, argv, count, stat);
 			}
-			else if (check_builtin(cmd) == 0)
+			else if (is_builtin(cmd) == 0)
 			{
 				stat = handle_builtin(cmd, stat);
 				free(cmd);
@@ -48,5 +48,4 @@ int main(__attribute__((unused)) int argc, char **argv)
 	}
 	return (stat);
 }
-
 

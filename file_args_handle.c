@@ -45,7 +45,7 @@ void file_treat(char *lines, int count, FILE *fp, char **argv)
 	cmnd = parse_cmd(lines);
 	if (_strncmp(cmnd[0], "exit", 4) == 0)
 		exit_file_handle(cmnd, lines, fp);
-	else if (check_builtin(cmnd) == 0)
+	else if (is_builtin(cmnd) == 0)
 	{
 		stat = handle_builtin(cmnd, stat);
 		free(cmnd);

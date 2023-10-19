@@ -110,7 +110,7 @@ int display_helper(char **cmnd, __attribute__((unused))int st);
 
 /****** BUILTIN COMMAND HANDLERS AND EXECUTE ******/
 
-int check_builtin(char **cmd);
+int is_builtin(char **cmnd);
 int handle_builtin(char **cmd, int st);
 void exit_bul(char **cmnd, char *input, char **argv, int z, int stat);
 int change_dir(char **cmnd, __attribute__((unused))int st);

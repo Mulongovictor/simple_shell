@@ -24,7 +24,7 @@ char *_getline()
 			free(buffered);
 			exit(EXIT_SUCCESS);
 		}
-		buffered[i] = a;
+		buffered[j] = a;
 		if (buffered[0] == '\n')
 			return (enter(buffered));
 		if (j >= buffsize)

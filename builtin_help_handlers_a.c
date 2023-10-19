@@ -76,7 +76,7 @@ void exit_help(void)
 	write(STDOUT_FILENO, mesg, _strlen(mesg));
 	mesg = " If no argument is given, the command is interpreted as";
 	write(STDOUT_FILENO, mesg, _strlen(mesg));
-	msg = " exit 0.\n";
+	mesg = " exit 0.\n";
 	write(STDOUT_FILENO, mesg, _strlen(mesg));
 }
 

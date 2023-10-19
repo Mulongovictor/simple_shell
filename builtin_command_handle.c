@@ -23,7 +23,7 @@ int is_builtin(char **cmnd)
 	}
 	while ((fun + i)->command)
 	{
-		if (_strcmp(cmd[0], (fun + i)->command) == 0)
+		if (_strcmp(cmnd[0], (fun + i)->command) == 0)
 			return (0);
 		i++;
 	}
@@ -41,7 +41,7 @@ int handle_builtin(char **cmnd, int st)
 	builtin built_in[] = {
 		{"cd", change_dir},
 		{"env", dis_env},
-		{"help", display_help},
+		{"help", display_helper},
 		{"echo", echo_bul},
 		{"history", history_dis},
 		{NULL, NULL}
@@ -81,7 +81,7 @@ void exit_bul(char **cmnd, char *input, char **argv, int z, int stat)
 	{
 		if (_isalpha(cmnd[1][i++]) != 0)
 		{
-			_prerror(argv, z, cmd);
+			_prerror(argv, z, cmnd);
 			free(input);
 			free(cmnd);
 			exit(2);

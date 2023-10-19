@@ -83,7 +83,7 @@ int echo_bul(char **cmnd, int st)
 		free(path);
 	}
 	else
-		return (print_echo(cmnd));
+		return (echo_printer(cmnd));
 
 	return (1);
 }

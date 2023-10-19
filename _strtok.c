@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * check_delim - function that checks if a character matchs any character
+ * is_delim - function that checks if a character matchs any character
  * @c: character to check
  * @str: string of delimiters
  * Return: 1 on success, 0 on failure

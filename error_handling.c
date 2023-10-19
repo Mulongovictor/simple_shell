@@ -2,7 +2,7 @@
 
 /**
  * print_error - Displays error message
- * @input: Input recieved from user
+ * @usrinput: Input recieved from user
  * @count: Count of shell loop
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
  */
